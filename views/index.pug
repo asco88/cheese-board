@@ -1,0 +1,19 @@
+html
+  head
+    style
+        include ../public/stylesheets/style.css
+    title= title
+  body
+    h1= message
+
+    div(class='blocks-main')
+        each block in blocks
+            div(class='blocks-single-block' style={
+                    width: block.width,
+                    height: block.height,
+                    background: block.background,
+                })
+                div(class='blocks-single-block-name')= block.name
+                div(class='blocks-single-block-text')= block.text
+        else
+            div(class='blocks-empty')
