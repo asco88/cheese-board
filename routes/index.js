@@ -6,17 +6,30 @@ router.get('/', (req, res) => {
   const data = JSON.parse(fs.readFileSync('./data.json'));
   const blocks = JSON.parse(JSON.stringify(data.blocks));
 
-  const parsedBlocks = [];
-  blocks.forEach(block => {
-    parsedBlocks.push({
-      name: block.name,
-      width: block.width,
-      height: block.height,
-      text: block.text
-    });
+  res.render('index', { title: 'Hey', message: 'Hello there!', blocks: blocks});
+});
+
+router.get('/new-block', (req, res) => {
+  console.log('new block');
+
+  const data = JSON.parse(fs.readFileSync('./data.json'));
+  const blocks = JSON.parse(JSON.stringify(data.blocks));
+  blocks.push({
+      "name": "example",
+      "width": 100,
+      "height": 100,
+      "background": "#ffffff",
+      "text": "this is some example block"
   });
 
-  res.render('index', { title: 'Hey', message: 'Hello there!', blocks: blocks, values: [1, 2, 3] });
+  data.blocks = blocks;
+
+  fs.writeFileSync('./data.json', JSON.stringify(data));
+
+  res.status(200).send();
 });
 
 module.exports = router;
+
+
+//onclick='window.location.href="new-block"'
