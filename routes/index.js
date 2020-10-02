@@ -9,17 +9,17 @@ router.get('/', (req, res) => {
   res.render('index', { title: 'Hey', message: 'Hello there!', blocks: blocks});
 });
 
-router.get('/new-block', (req, res) => {
-  console.log('new block');
+router.post('/new-block', (req, res) => {
+  console.log(req.body);
 
   const data = JSON.parse(fs.readFileSync('./data.json'));
   const blocks = JSON.parse(JSON.stringify(data.blocks));
   blocks.push({
-      "name": "example",
+      "name": "",
       "width": 100,
       "height": 100,
       "background": "#ffffff",
-      "text": "this is some example block"
+      "text": req.body.value
   });
 
   data.blocks = blocks;

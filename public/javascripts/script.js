@@ -1,4 +1,4 @@
-$('#new-block-btn').click(function(){
+$('#new-block-btn').click(() => {
     $('#new-block-wrapper').fadeIn(100);
     // $('#new-block-btn').fadeOut(400);
     // $.get( "new-block", function( data ) {
@@ -6,9 +6,11 @@ $('#new-block-btn').click(function(){
     // });
 });
 
-$('#submit-btn').click(function(){
+$('#submit-btn').click(() => {
     // $('#new-block-btn').fadeOut(400);
-    $.get( "new-block", function( data ) {
+    const value = $('#new-block-text').val();
+
+    $.post( "new-block", {value}, ( data ) => {
         location.reload();
         // $('#new-block-wrapper').fadeOut(100);
     });
