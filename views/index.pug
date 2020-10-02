@@ -13,6 +13,7 @@ html
           h1="Add new block"
         div(id='body')
           textarea(id='new-block-text')
+          input(type='text', id='new-block-link', placeholder='link')
         div(id='submit-btn')
           span="Add Block"
     div(class='blocks-main')
@@ -21,11 +22,13 @@ html
                     width: block.width,
                     height: block.height,
                     background: block.background,
+                    border: block.border,
+                    'box-shadow': block.boxshadow
                 }, onclick=block.link)
                 div(class='blocks-single-block-name')= block.name
                 div(class='blocks-single-block-text')= block.text
                   //- div(class='fas fa-cloud')
-                  img(class='blocks-single-block-icon' ,src=block.icon)
+                  img(class='blocks-single-block-icon' , src=block.icon)
         else
             div(class='blocks-empty')
 

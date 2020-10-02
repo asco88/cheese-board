@@ -20,8 +20,14 @@ router.post('/new-block', (req, res) => {
       "name": "",
       "width": 100,
       "height": 100,
-      "background": "#ffffff",
-      "text": req.body.value
+      // "background": "#ffffff",
+      "text": req.body.value,
+      "link": req.body.link,
+      // "opacity": 0
+      "background": "none",
+      "icon": "/images/jellyfin.png",
+      "border": "none",
+      "boxshadow": "none"
   });
 
   data.blocks = blocks;
