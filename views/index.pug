@@ -5,8 +5,14 @@ html
     title= title
   body
     div(class='top-bar')
-      div(class='fas fa-plus-square', id='newblock')
-      div(id='newblockblock')
+      div(class='fas fa-plus-square', id='new-block-btn')
+    div(id='new-block-wrapper')
+      div(id='new-block-main')
+        div(id='title')
+          h1="Add new block"
+        div(id='body')
+        div(id='submit-btn')
+          span="Add Block"
     div(class='blocks-main')
         each block in blocks
             div(class='blocks-single-block' style={
