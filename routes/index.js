@@ -6,7 +6,9 @@ router.get('/', (req, res) => {
   const data = JSON.parse(fs.readFileSync('./data.json'));
   const blocks = JSON.parse(JSON.stringify(data.blocks));
 
-  res.render('index', { title: 'Hey', message: 'Hello there!', blocks: blocks});
+  blocks.forEach(block => block.link ? block.link = `openInNewTab(\'${block.link}\')` : '');
+
+  res.render('index', { blocks: blocks});
 });
 
 router.post('/new-block', (req, res) => {
