@@ -6,9 +6,16 @@ router.get('/', (req, res) => {
   const data = JSON.parse(fs.readFileSync('./data.json'));
   const blocks = JSON.parse(JSON.stringify(data.blocks));
 
-  blocks.forEach(block => block.link ? block.link = `openInNewTab(\'${block.link}\')` : '');
+  blocks.forEach(block => {
+    block.link = block.link ? `openInNewTab(\'${block.link}\')` : '' ;
+    if (block.transperent && block.transperent === 'true') {
+      block.border = 'none';
+      block.boxshadow = 'none';
+      block.background = 'none';
+    }
+  });
 
-  res.render('index', { blocks: blocks});
+  res.render('index', { blocks: blocks });
 });
 
 router.post('/new-block', (req, res) => {
@@ -17,17 +24,13 @@ router.post('/new-block', (req, res) => {
   const data = JSON.parse(fs.readFileSync('./data.json'));
   const blocks = JSON.parse(JSON.stringify(data.blocks));
   blocks.push({
-      "name": "",
-      "width": 100,
-      "height": 100,
-      // "background": "#ffffff",
-      "text": req.body.value,
-      "link": req.body.link,
-      // "opacity": 0
-      "background": "none",
-      "icon": "/images/jellyfin.png",
-      "border": "none",
-      "boxshadow": "none"
+    "name": "",
+    "width": 100,
+    "height": 100,
+    "text": req.body.value,
+    "link": req.body.link,
+    "icon": "/images/jellyfin.png",
+    "transperent": req.body.transperent
   });
 
   data.blocks = blocks;

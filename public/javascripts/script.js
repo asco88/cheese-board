@@ -6,8 +6,9 @@ $('#submit-btn').click(() => {
     // $('#new-block-btn').fadeOut(400);
     const value = $('#new-block-text').val();
     const link = $('#new-block-link').val();
+    const transperent = $('#new-block-transperent').val();
 
-    $.post("new-block", { value, link }, (data) => {
+    $.post("new-block", { value, link, transperent }, (data) => {
         location.reload();
         // $('#new-block-wrapper').fadeOut(100);
     });

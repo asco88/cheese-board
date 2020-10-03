@@ -1,10 +1,9 @@
 body {
   padding: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url('../images/bg2.jpg');
+  background-image: url('../images/bg3.jpg');
   background-repeat: no-repeat, repeat;
   background-size: cover;
-  /* background: #99eaff; */
 }
 
 .top-bar {
@@ -106,6 +105,7 @@ body {
   font-size: 15px;
   line-height: 1.5;
   cursor: pointer;
+  background: #ffffff;
 
   display: flex;
   flex-direction: column;
