@@ -4,7 +4,8 @@ const fs = require('fs');
 
 router.get('/', (req, res) => {
   const data = JSON.parse(fs.readFileSync('/cheese-board/user_data/data.json'));
-  const bg = data.bg ? data.bg : '/images/bg3.jpg';
+  const bg = data.bg ? data.bg : '/images/bg1.jpg';
+  const bgUrl = `url('${bg}')`;
   const blocks = JSON.parse(JSON.stringify(data.blocks));
 
   blocks.forEach(block => {
@@ -19,7 +20,7 @@ router.get('/', (req, res) => {
     }
   });
 
-  res.render('index', { blocks, bg });
+  res.render('index', { blocks, bgUrl });
 });
 
 router.post('/new-block', (req, res) => {
@@ -27,7 +28,7 @@ router.post('/new-block', (req, res) => {
 
   const {value, link, transperent, icon} = req.body;
 
-  const data = JSON.parse(fs.readFileSync('./data.json'));
+  const data = JSON.parse(fs.readFileSync('/cheese-board/user_data/data.json'));
   const blocks = JSON.parse(JSON.stringify(data.blocks));
   blocks.push({
     "name": value,
@@ -41,7 +42,7 @@ router.post('/new-block', (req, res) => {
 
   data.blocks = blocks;
 
-  fs.writeFileSync('./data.json', JSON.stringify(data));
+  fs.writeFileSync('/cheese-board/user_data/data.json', JSON.stringify(data));
 
   res.status(200).send();
 });

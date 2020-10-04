@@ -22,7 +22,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'cheese-board')));
 
-fs.writeFileSync('/cheese-board/user_data/data.json', JSON.stringify({"blocks":[]}));
+if (!fs.existsSync('/cheese-board/user_data/data.json'))
+  fs.writeFileSync('/cheese-board/user_data/data.json', JSON.stringify({"blocks":[]}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
