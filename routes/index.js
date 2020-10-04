@@ -3,7 +3,7 @@ var router = express.Router();
 const fs = require('fs');
 
 router.get('/', (req, res) => {
-  const data = JSON.parse(fs.readFileSync('./cheese-board/user_data/data.json'));
+  const data = JSON.parse(fs.readFileSync('/cheese-board/user_data/data.json'));
   const blocks = JSON.parse(JSON.stringify(data.blocks));
 
   blocks.forEach(block => {
