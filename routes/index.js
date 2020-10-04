@@ -4,6 +4,7 @@ const fs = require('fs');
 
 router.get('/', (req, res) => {
   const data = JSON.parse(fs.readFileSync('/cheese-board/user_data/data.json'));
+  const bg = data.bg ? data.bg : '/images/bg3.jpg';
   const blocks = JSON.parse(JSON.stringify(data.blocks));
 
   blocks.forEach(block => {
@@ -18,7 +19,7 @@ router.get('/', (req, res) => {
     }
   });
 
-  res.render('index', { blocks: blocks });
+  res.render('index', { blocks, bg });
 });
 
 router.post('/new-block', (req, res) => {
