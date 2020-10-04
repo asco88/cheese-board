@@ -24,16 +24,18 @@ router.get('/', (req, res) => {
 router.post('/new-block', (req, res) => {
   console.log(req.body);
 
+  const {value, link, transperent, icon} = req.body;
+
   const data = JSON.parse(fs.readFileSync('./data.json'));
   const blocks = JSON.parse(JSON.stringify(data.blocks));
   blocks.push({
-    "name": "",
+    "name": value,
     "width": 100,
     "height": 100,
-    "text": req.body.value,
-    "link": req.body.link,
-    "icon": "/images/jellyfin.png",
-    "transperent": req.body.transperent
+    "text": "",
+    "link": link,
+    "icon": `/images/${icon}.png`,
+    "transperent": transperent
   });
 
   data.blocks = blocks;

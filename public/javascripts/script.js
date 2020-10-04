@@ -7,8 +7,9 @@ $('#submit-btn').click(() => {
     const value = $('#new-block-text').val();
     const link = $('#new-block-link').val();
     const transperent = $('#new-block-transperent').val();
+    const icon = $('#new-block-icon').val();
 
-    $.post("new-block", { value, link, transperent }, (data) => {
+    $.post("new-block", { value, link, transperent, icon }, (data) => {
         location.reload();
         // $('#new-block-wrapper').fadeOut(100);
     });
