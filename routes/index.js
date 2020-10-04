@@ -12,6 +12,9 @@ router.get('/', (req, res) => {
       block.border = 'none';
       block.boxshadow = 'none';
       block.background = 'none';
+
+      // block.width = 'none';
+      // block.height = 'none';
     }
   });
 
