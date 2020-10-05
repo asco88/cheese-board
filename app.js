@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, '/cheese-board/images')));
+app.use(express.static('/cheese-board/images'));
 
 if (!fs.existsSync('/cheese-board/user_data/data.json'))
   fs.writeFileSync('/cheese-board/user_data/data.json', JSON.stringify({"blocks":[]}));
