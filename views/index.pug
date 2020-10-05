@@ -5,27 +5,26 @@ html
     title= title
   body(style={'background-image': bgUrl})
     div(class='top-bar')
-      div(class='right-panel')
+      div(class='right-panel', style={color: theme})
         div(class='fas fa-pencil-alt', id='edit-btn')
         div(class='fas fa-cog', id='settings-btn')
         div(class='fas fa-plus-square', id='new-block-btn')
     include new-block.pug
     include settings.pug
-    div(class='blocks-main')
-        each block in blocks
-            div(class='blocks-single-block' style={
-                    width: block.width,
-                    height: block.height,
-                    background: block.background,
-                    border: block.border,
-                    'box-shadow': block.boxshadow
-                }, onclick=block.link)
-                div(class='blocks-single-block-name')= block.name
-                div(class='blocks-single-block-text')= block.text
-                  //- div(class='fas fa-cloud')
-                  img(class='blocks-single-block-icon' , src=block.icon)
-        else
-            div(class='blocks-empty')
+    div(class='blocks-wrapper', style={top: blocksWrapperTop})
+      div(class='blocks-main', style={'flex-direction': blocksWrapperDirection})
+          each block in blocks
+              div(class='blocks-single-block' style={
+                      width: block.width,
+                      background: block.background,
+                      border: block.border,
+                      'box-shadow': block.boxshadow,
+                  }, onclick=block.link)
+                  div(class='blocks-single-block-name', style={'font-size': fontSize})= block.name
+                  div(class='blocks-single-block-text')= block.text
+                    img(class='blocks-single-block-icon' , src=block.icon, style={width: iconSize})
+          else
+              div(class='blocks-empty')
 
     script(src='https://kit.fontawesome.com/615e2ad26d.js' crossorigin='anonymous')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js' crossorigin='anonymous')

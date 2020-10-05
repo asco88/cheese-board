@@ -23,7 +23,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 if (!fs.existsSync(config.data)) {
   fs.writeFileSync(config.data, JSON.stringify({"blocks":[]}));
 }
+if (!fs.existsSync(config.settings)) {
+  fs.writeFileSync(config.settings, JSON.stringify({"bg":"/images/bg8.jpg"}));
+}
+
 fs.chmodSync(config.data, '777');
+fs.chmodSync(config.settings, '777');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

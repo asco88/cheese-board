@@ -5,8 +5,11 @@ const config = require('../config');
 
 router.get('/', (req, res) => {
   const data = JSON.parse(fs.readFileSync(config.data));
-  const bg = data.bg ? data.bg : '/images/bg1.jpg';
+  const settings = JSON.parse(fs.readFileSync(config.settings));
+
+  const bg = settings.bg ? settings.bg : '/images/bg1.jpg';
   const bgUrl = `url('${bg}')`;
+
   const blocks = JSON.parse(JSON.stringify(data.blocks));
 
   fs.readdirSync(config.userImages).forEach(file => {
@@ -16,29 +19,24 @@ router.get('/', (req, res) => {
       if (err) throw err;
       console.log('source.txt was copied to destination.txt');
     });
-
-
   });
 
   blocks.forEach(block => {
-    block.link = block.link ? `openInNewTab(\'${block.link}\')` : '' ;
+    block.link = block.link ? `openInNewTab(\'${block.link}\')` : '';
     if (block.transperent && block.transperent === 'true') {
       block.border = 'none';
       block.boxshadow = 'none';
       block.background = 'none';
-
-      // block.width = 'none';
-      // block.height = 'none';
     }
   });
 
-  res.render('index', { blocks, bgUrl });
+  res.render('index', { blocks, bgUrl, ...settings });
 });
 
 router.post('/new-block', (req, res) => {
   console.log(req.body);
 
-  const {value, link, transperent, icon} = req.body;
+  const { value, link, transperent, icon } = req.body;
 
   const data = JSON.parse(fs.readFileSync(config.data));
   const blocks = JSON.parse(JSON.stringify(data.blocks));
@@ -60,6 +58,3 @@ router.post('/new-block', (req, res) => {
 });
 
 module.exports = router;
-
-
-//onclick='window.location.href="new-block"'
