@@ -42,7 +42,7 @@ body {
 }
 
 #new-block-wrapper {
-  display:none;
+  display: none;
 }
 
 #new-block-main {
@@ -51,16 +51,16 @@ body {
   /* height: 20%; */
   top: 20%;
   right: 40%;
-  border: 1px solid rgba(0,0,0,0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
   border-radius: 4px;
   /* background-color: lightgrey; */
   z-index: 1000;
   /* opacity: 0.8; */
   background: white;
-  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  color: rgba(0,0,0,0.6);
+  color: rgba(0, 0, 0, 0.6);
 }
 
 #new-block-main #title {
@@ -121,9 +121,9 @@ body {
   opacity: 0.6;
   padding: 10px;
   margin: 10px;
-  border:1px solid rgba(1, 1, 1, 0.5);
+  border: 1px solid rgba(1, 1, 1, 0.5);
   border-radius: 6px;
-  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
   font-family: Arial;
   font-size: 15px;
   line-height: 1.5;
@@ -157,7 +157,7 @@ body {
 }
 
 #settings-wrapper {
-  display:none;
+  display: none;
 }
 
 #settings-main {
@@ -166,16 +166,16 @@ body {
   /* height: 20%; */
   top: 20%;
   right: 40%;
-  border: 1px solid rgba(0,0,0,0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
   border-radius: 4px;
   /* background-color: lightgrey; */
   z-index: 1000;
   /* opacity: 0.8; */
   background: white;
-  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  color: rgba(0,0,0,0.6);
+  color: rgba(0, 0, 0, 0.6);
 }
 
 #settings-main #title {
@@ -220,4 +220,35 @@ body {
 
 #settings-main #footer #cancel-btn:hover {
   color: rgba(255, 255, 255, 0.6);
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.cheese-board {
+  position: absolute;
+  bottom: 40px;
+  opacity: 0.8;
+
+  width: 150px;
+  color: white;
+  font-size: 15px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.cheese-board:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.cheese-board #title {
+  text-decoration: none;
+  color: white;
 }
