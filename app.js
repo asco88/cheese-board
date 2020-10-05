@@ -34,7 +34,7 @@ if (!fs.existsSync(config.data)) {
     fs.writeFileSync(config.data, JSON.stringify({ "blocks": [] }));
 }
 if (!fs.existsSync(config.settings)) {
-    fs.writeFileSync(config.settings, JSON.stringify({ "bg": "/images/bg8.jpg" }));
+    fs.writeFileSync(config.settings, JSON.stringify({"bg":"/images/bg8.jpg", "theme": "blue", "blocksWrapperTop": "5%", "blocksWrapperDirection": "row", "iconSize": "40px", "fontSize": "12px"}));
 }
 
 fs.chmodSync(config.data, '777');

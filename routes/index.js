@@ -57,4 +57,22 @@ router.post('/new-block', (req, res) => {
     res.status(200).send();
 });
 
+router.post('/settings', (req, res) => {
+    console.log(req.body);
+
+    const { bg, theme, blocksWrapperTop, blocksWrapperDirection, iconSize, fontSize } = req.body;
+    const settings = JSON.parse(fs.readFileSync(config.settings));
+
+    settings.bg = bg;
+    settings.theme = theme;
+    settings.blocksWrapperTop = blocksWrapperTop;
+    settings.blocksWrapperDirection = blocksWrapperDirection;
+    settings.iconSize = iconSize;
+    settings.fontSize = fontSize;
+
+    fs.writeFileSync(config.settings, JSON.stringify(settings));
+
+    res.status(200).send();
+});
+
 module.exports = router;

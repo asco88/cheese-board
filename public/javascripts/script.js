@@ -14,8 +14,7 @@ $('#settings-main #footer #cancel-btn').click(() => {
     $('#settings-wrapper').fadeOut(100);
 });
 
-$('#submit-btn').click(() => {
-    // $('#new-block-btn').fadeOut(400);
+$('#new-block-wrapper #submit-btn').click(() => {
     const value = $('#new-block-text').val();
     const link = $('#new-block-link').val();
     const transperent = $('#new-block-transperent').val();
@@ -24,6 +23,19 @@ $('#submit-btn').click(() => {
     $.post("new-block", { value, link, transperent, icon }, (data) => {
         location.reload();
         // $('#new-block-wrapper').fadeOut(100);
+    });
+});
+
+$('#settings-wrapper #submit-btn').click(() => {
+    const bg = $('#settings-bg').val();
+    const theme = $('#settings-theme').val();
+    const blocksWrapperTop = $('#settings-blocksWrapperTop').val();
+    const blocksWrapperDirection = $('#settings-blocksWrapperDirection').val();
+    const iconSize = $('#settings-iconSize').val();
+    const fontSize = $('#settings-fontSize').val();
+
+    $.post("settings", { bg, theme, blocksWrapperTop, blocksWrapperDirection, iconSize, fontSize }, (data) => {
+        location.reload();
     });
 });
 

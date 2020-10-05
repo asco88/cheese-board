@@ -3,11 +3,14 @@ div(id='settings-wrapper')
         div(id='title')
             h1="Settings"
         div(id='body')
-            textarea(id='settings-text')
-            input(type='text', id='settings-background', placeholder='/images/bg5.jpg')
-            input(type='text', id='settings-icon-size', placeholder='50px')
+            input(type='text', id='settings-bg', value=bg)
+            input(type='text', id='settings-theme', value=theme)
+            input(type='text', id='settings-blocksWrapperTop', value=blocksWrapperTop)
+            input(type='text', id='settings-blocksWrapperDirection', value=blocksWrapperDirection)
+            input(type='text', id='settings-iconSize', value=iconSize)
+            input(type='text', id='settings-fontSize', value=fontSize)
         div(id='footer')
             div(id='cancel-btn')
                 span="Cancel"
             div(id='submit-btn')
-                span="Add Block"
+                span="Save"
