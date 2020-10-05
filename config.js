@@ -9,4 +9,4 @@ const paths = {
     }
 }
 
-module.exports = paths.production;
+module.exports = paths.test;

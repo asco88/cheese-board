@@ -2,6 +2,18 @@ $('#new-block-btn').click(() => {
     $('#new-block-wrapper').fadeIn(100);
 });
 
+$('#new-block-main #footer #cancel-btn').click(() => {
+    $('#new-block-wrapper').fadeOut(100);
+});
+
+$('#settings-btn').click(() => {
+    $('#settings-wrapper').fadeIn(100);
+});
+
+$('#settings-main #footer #cancel-btn').click(() => {
+    $('#settings-wrapper').fadeOut(100);
+});
+
 $('#submit-btn').click(() => {
     // $('#new-block-btn').fadeOut(400);
     const value = $('#new-block-text').val();

@@ -44,8 +44,8 @@ router.post('/new-block', (req, res) => {
   const blocks = JSON.parse(JSON.stringify(data.blocks));
   blocks.push({
     "name": value,
-    "width": 100,
-    "height": 100,
+    // "width": 100,
+    // "height": 100,
     "text": "",
     "link": link,
     "icon": `/images/${icon}.png`,
