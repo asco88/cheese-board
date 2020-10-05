@@ -51,10 +51,19 @@ router.get('/editor', (req, res) => {
 
     const blocks = JSON.parse(JSON.stringify(data.blocks));
 
-    fs.readdirSync(config.userImages).forEach(file => {
+    fs.readdirSync(config.userIcons).forEach(file => {
         console.log(file);
 
-        fs.copyFile(`${config.userImages}/${file}`, `./public/images/${file}`, (err) => {
+        fs.copyFile(`${config.userIcons}/${file}`, `./public/images/icons/${file}`, (err) => {
+            if (err) throw err;
+            console.log('source.txt was copied to destination.txt');
+        });
+    });
+
+    fs.readdirSync(config.userWallpapers).forEach(file => {
+        console.log(file);
+
+        fs.copyFile(`${config.userWallpapers}/${file}`, `./public/images/wallpapers/${file}`, (err) => {
             if (err) throw err;
             console.log('source.txt was copied to destination.txt');
         });
@@ -69,7 +78,7 @@ router.get('/editor', (req, res) => {
         }
     });
 
-    res.render('editor', { blocks, bgUrl, ...settings });
+    res.render('index', { blocks, bgUrl, ...settings });
 });
 
 router.post('/new-block', (req, res) => {
