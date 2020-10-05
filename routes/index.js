@@ -12,6 +12,45 @@ router.get('/', (req, res) => {
 
     const blocks = JSON.parse(JSON.stringify(data.blocks));
 
+    fs.readdirSync(config.userIcons).forEach(file => {
+        console.log(file);
+
+        fs.copyFile(`${config.userIcons}/${file}`, `./public/images/icons/${file}`, (err) => {
+            if (err) throw err;
+            console.log('source.txt was copied to destination.txt');
+        });
+    });
+
+    fs.readdirSync(config.userWallpapers).forEach(file => {
+        console.log(file);
+
+        fs.copyFile(`${config.userWallpapers}/${file}`, `./public/images/wallpapers/${file}`, (err) => {
+            if (err) throw err;
+            console.log('source.txt was copied to destination.txt');
+        });
+    });
+
+    blocks.forEach(block => {
+        block.link = block.link ? `openInNewTab(\'${block.link}\')` : '';
+        if (block.transperent && block.transperent === 'true') {
+            block.border = 'none';
+            block.boxshadow = 'none';
+            block.background = 'none';
+        }
+    });
+
+    res.render('index', { blocks, bgUrl, ...settings });
+});
+
+router.get('/editor', (req, res) => {
+    const data = JSON.parse(fs.readFileSync(config.data));
+    const settings = JSON.parse(fs.readFileSync(config.settings));
+
+    const bg = settings.bg ? settings.bg : '/images/bg1.jpg';
+    const bgUrl = `url('${bg}')`;
+
+    const blocks = JSON.parse(JSON.stringify(data.blocks));
+
     fs.readdirSync(config.userImages).forEach(file => {
         console.log(file);
 
@@ -30,7 +69,7 @@ router.get('/', (req, res) => {
         }
     });
 
-    res.render('index', { blocks, bgUrl, ...settings });
+    res.render('editor', { blocks, bgUrl, ...settings });
 });
 
 router.post('/new-block', (req, res) => {
@@ -46,7 +85,7 @@ router.post('/new-block', (req, res) => {
         // "height": 100,
         "text": "",
         "link": link,
-        "icon": `/images/${icon}.png`,
+        "icon": `/images/icons/${icon}.png`,
         "transperent": transperent
     });
 

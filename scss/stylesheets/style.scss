@@ -30,6 +30,13 @@ body {
             color: white;
             cursor: pointer;
         }
+
+        #edit-btn {
+            &:hover {
+                color: white;
+                cursor: pointer;
+            }
+        }
     }
 }
 
@@ -102,53 +109,61 @@ body {
 .blocks-wrapper {
     position: absolute;
     top: 0;
-}
 
-.blocks-main {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
+    .blocks-main {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
 
-.blocks-single-block {
-    opacity: 0.6;
-    padding: 5px;
-    margin: 10px;
-    border: 1px solid rgba(1, 1, 1, 0.5);
-    border-radius: 6px;
-    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
-    font-family: Arial;
-    font-size: 15px;
-    line-height: 1.5;
-    cursor: pointer;
-    background: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+        .blocks-single-block {
+            opacity: 0.6;
+            padding: 5px;
+            margin: 10px;
+            font-family: Arial;
+            font-size: 15px;
+            line-height: 1.5;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
-    &:hover {
-        opacity: 0.9;
+            // border: 1px solid rgba(1, 1, 1, 0.5);
+            // border-radius: 6px;
+            // box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+            // background: #ffffff;
+
+            &:hover {
+                opacity: 0.9;
+            }
+
+            .blocks-single-block-name {
+                /* height: 30%; */
+                font-size: 13px;
+                font-weight: 700;
+                text-align: center;
+                color: #ffffff;
+            }
+
+            .blocks-single-block-text {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+
+                .blocks-single-block-icon {
+                    border: 1px solid rgba(1, 1, 1, 0.5);
+                    border-radius: 6px;
+                    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+                    background: #ffffff;
+                    padding: 5px;
+
+                    .blocks-single-block img {
+                        width: 35px;
+                        text-align: center;
+                    }
+                }
+            }
+        }
     }
-}
-
-.blocks-single-block-text {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-    /* height: 70%; */
-}
-
-.blocks-single-block img {
-    width: 35px;
-    text-align: center;
-}
-
-.blocks-single-block-name {
-    /* height: 30%; */
-    font-size: 13px;
-    font-weight: 700;
-    text-align: center;
 }
 
 #settings-wrapper {
