@@ -1,12 +1,24 @@
 var express = require('express');
 var router = express.Router();
 const fs = require('fs');
+const config = require('../config');
 
 router.get('/', (req, res) => {
-  const data = JSON.parse(fs.readFileSync('/cheese-board/user_data/data.json'));
+  const data = JSON.parse(fs.readFileSync(config.data));
   const bg = data.bg ? data.bg : '/images/bg1.jpg';
   const bgUrl = `url('${bg}')`;
   const blocks = JSON.parse(JSON.stringify(data.blocks));
+
+  fs.readdirSync(config.userImages).forEach(file => {
+    console.log(file);
+
+    fs.copyFile(`${config.userImages}/${file}`, `./public/images/${file}`, (err) => {
+      if (err) throw err;
+      console.log('source.txt was copied to destination.txt');
+    });
+
+
+  });
 
   blocks.forEach(block => {
     block.link = block.link ? `openInNewTab(\'${block.link}\')` : '' ;
@@ -28,7 +40,7 @@ router.post('/new-block', (req, res) => {
 
   const {value, link, transperent, icon} = req.body;
 
-  const data = JSON.parse(fs.readFileSync('/cheese-board/user_data/data.json'));
+  const data = JSON.parse(fs.readFileSync(config.data));
   const blocks = JSON.parse(JSON.stringify(data.blocks));
   blocks.push({
     "name": value,
@@ -42,7 +54,7 @@ router.post('/new-block', (req, res) => {
 
   data.blocks = blocks;
 
-  fs.writeFileSync('/cheese-board/user_data/data.json', JSON.stringify(data));
+  fs.writeFileSync(config.data, JSON.stringify(data));
 
   res.status(200).send();
 });

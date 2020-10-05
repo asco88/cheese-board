@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const config = require('./config');
 
 var fs = require('fs');
 
@@ -20,10 +21,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static('/cheese-board/images'));
+// app.use(express.static(path.join(__dirname, './cheese-board')));
+// app.use(express.static('C:\\msf\\cheese-dash\\cheese-board\\images'));
 
-if (!fs.existsSync('/cheese-board/user_data/data.json'))
-  fs.writeFileSync('/cheese-board/user_data/data.json', JSON.stringify({"blocks":[]}));
+if (!fs.existsSync(config.data))
+  fs.writeFileSync(config.data, JSON.stringify({"blocks":[]}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
