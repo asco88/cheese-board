@@ -13,4 +13,4 @@ const paths = {
     }
 }
 
-module.exports = paths.test;
+module.exports = paths.production;
