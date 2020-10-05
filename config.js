@@ -9,7 +9,7 @@ const paths = {
         data: '/cheese-board/user_data/data.json',
         settings: '/cheese-board/user_data/settings.json',
         userIcons: '/cheese-board/icons',
-        userWallpapers: '/cheese-board/wallpaper'
+        userWallpapers: '/cheese-board/wallpapers'
     }
 }
 
