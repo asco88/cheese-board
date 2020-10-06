@@ -84,7 +84,7 @@ router.get('/editor', (req, res) => {
 
     const thumbnails = fs.readdirSync('./public/images/thumbnails').map(item => {return {path: `/images/thumbnails/${item}`, id: item.split('.')[0], func: `pressWallpaper("${item.split('.')[0]}")`}});
 
-    res.render('index', { blocks, bgUrl, ...settings, wallpapers: [], thumbnails });
+    res.render('editor', { blocks, bgUrl, ...settings, wallpapers: [], thumbnails });
 });
 
 router.post('/new-block', (req, res) => {
@@ -106,7 +106,7 @@ router.post('/new-block', (req, res) => {
 
     fs.writeFileSync(config.data, JSON.stringify(data));
 
-    res.status(200).send();
+    res.status(200).json({}).send();
 });
 
 router.post('/settings', (req, res) => {
@@ -124,7 +124,7 @@ router.post('/settings', (req, res) => {
 
     fs.writeFileSync(config.settings, JSON.stringify(settings));
 
-    res.status(200).send();
+    res.status(200).json({}).send();
 });
 
 router.post('/change-wallpaper', (req, res) => {
@@ -137,7 +137,7 @@ router.post('/change-wallpaper', (req, res) => {
 
     fs.writeFileSync(config.settings, JSON.stringify(settings));
 
-    res.status(200).send();
+    res.status(200).json({}).send();
 });
 
 router.get('/all-wallpapers', (req, res) => {

@@ -20,15 +20,15 @@ html
                       background: block.background,
                       border: block.border,
                       'box-shadow': block.boxshadow,
-                  }, onclick=block.link)
-                  div(class='blocks-single-block-text')= block.text
+                  })
+                  div(class='blocks-single-block-text', onclick=block.link)= block.text
                     img(class='blocks-single-block-icon' , src=block.icon, style={width: iconSize})
                   div(class='blocks-single-block-name', style={'font-size': fontSize})= block.name
           else
               div(class='blocks-empty')
 
     script(src='https://kit.fontawesome.com/615e2ad26d.js' crossorigin='anonymous')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js' crossorigin='anonymous')
+    //- script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js' crossorigin='anonymous')
     script(src="/javascripts/script.js")
 
   footer

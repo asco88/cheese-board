@@ -1,52 +1,105 @@
 let selectedBg = undefined;
 
-$('#new-block-btn').click(() => {
-    $('#new-block-wrapper').fadeIn(100);
-});
-
-$('#new-block-main #footer #cancel-btn').click(() => {
-    $('#new-block-wrapper').fadeOut(100);
-});
-
-$('#settings-btn').click(() => {
-    $('#settings-wrapper').fadeIn(100);
-});
-
-$('#settings-main #footer #cancel-btn').click(() => {
-    $('#settings-wrapper').fadeOut(100);
-});
-
-$('#new-block-wrapper #submit-btn').click(() => {
-    const value = $('#new-block-text').val();
-    const link = $('#new-block-link').val();
-    const transperent = $('#new-block-transperent').val();
-    const icon = $('#new-block-icon').val();
-
-    $.post("new-block", { value, link, transperent, icon }, (data) => {
-        location.reload();
-        // $('#new-block-wrapper').fadeOut(100);
+async function postData(url = '', data = {}) {
+    const response = await fetch(url, {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors', // no-cors, *cors, same-origin
+        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(data) // body data type must match "Content-Type" header
     });
+    return response.json(); // parses JSON response into native JavaScript objects
+}
+
+const show = (selector) => {
+    document.querySelector(selector).style.display = 'block';
+}
+
+const hide = (selector) => {
+    document.querySelector(selector).style.display = 'none';
+}
+
+const onClick = (selector, cb) => {
+    document.querySelector(selector).onclick = cb;
+}
+
+const value = async (selector) => {
+    return document.querySelector(selector).value;
+}
+
+const addClass = (selector, clazz) => {
+    document.querySelector(selector).classList.add(clazz);
+}
+
+// open modals
+
+onClick('#new-block-btn', () => {
+    show('#new-block-wrapper');
 });
 
-$('#settings-wrapper #submit-btn').click(() => {
-    const bg = $('#settings-bg').val();
-    const theme = $('#settings-theme').val();
-    const blocksWrapperTop = $('#settings-blocksWrapperTop').val();
-    const blocksWrapperDirection = $('#settings-blocksWrapperDirection').val();
-    const iconSize = $('#settings-iconSize').val();
-    const fontSize = $('#settings-fontSize').val();
-
-    $.post("settings", { bg, theme, blocksWrapperTop, blocksWrapperDirection, iconSize, fontSize }, (data) => {
-        location.reload();
-    });
+onClick('#settings-btn', () => {
+    show('#settings-wrapper');
 });
 
-$('#wallpapers-wrapper #submit-btn').click(() => {
-    // const selectedBg = $('.wallpapers-single .active').val();
+// close modals
 
-    $.post("change-wallpaper", { selectedBg }, (data) => {
-        location.reload();
-    });
+onClick('#new-block-main #footer #cancel-btn', () => {
+    hide('#new-block-wrapper');
+});
+
+onClick('#settings-main #footer #cancel-btn', () => {
+    hide('#settings-wrapper');
+});
+
+onClick('#new-block-wrapper #submit-btn', async () => {
+    const name = await value('#new-block-text');
+    const link = await value('#new-block-link');
+    const transperent = await value('#new-block-transperent');
+    const icon = await value('#new-block-icon');
+
+    postData('new-block', { value: name, link, transperent, icon })
+        .then(() => {
+            location.reload();
+        });
+
+
+    // $.post("new-block", { value, link, transperent, icon }, (data) => {
+    //     location.reload();
+    // });
+});
+
+onClick('#settings-wrapper #submit-btn', async () => {
+    const bg = await value('#settings-bg');
+    const theme = await value('#settings-theme');
+    const blocksWrapperTop = await value('#settings-blocksWrapperTop');
+    const blocksWrapperDirection = await value('#settings-blocksWrapperDirection');
+    const iconSize = await value('#settings-iconSize');
+    const fontSize = await value('#settings-fontSize');
+
+    postData('settings', { bg, theme, blocksWrapperTop, blocksWrapperDirection, iconSize, fontSize })
+        .then(() => {
+            location.reload();
+        });
+
+    // $.post("settings", { bg, theme, blocksWrapperTop, blocksWrapperDirection, iconSize, fontSize }, (data) => {
+    //     location.reload();
+    // });
+});
+
+onClick('#wallpapers-wrapper #submit-btn', () => {
+    // $.post("change-wallpaper", { selectedBg }, (data) => {
+    //     location.reload();
+    // });
+    postData('change-wallpaper', { selectedBg })
+        .then(() => {
+            location.reload();
+        });
 });
 
 function openInNewTab(url) {
@@ -55,12 +108,17 @@ function openInNewTab(url) {
 }
 
 function openWallpaperChooser() {
-    $('#settings-wrapper').fadeOut(100);
-    $('#wallpapers-wrapper').fadeIn(100);
+    hide('#settings-wrapper');
+    show('#wallpapers-wrapper');
 }
 
 function pressWallpaper(id) {
-    $('.wallpapers-single').removeClass('active')
-    $('#' + id).addClass('active');
+    const els = document.querySelectorAll('.wallpapers-single');
+
+    for(i = 0; i < els.length; i++) {
+        els[i].classList.remove('active')
+    }
+
+    addClass('#' + id, 'active');
     selectedBg = id;
 }

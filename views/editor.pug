@@ -11,15 +11,18 @@ html
         div(class='fas fa-plus-square', id='new-block-btn')
     include new-block.pug
     include settings.pug
+    include block-editor.pug
     div(class='blocks-wrapper', style={top: blocksWrapperTop})
       div(class='blocks-main', style={'flex-direction': blocksWrapperDirection})
           each block in blocks
-              div(class='blocks-single-block' style={
+              div(class='blocks-single-block editor' style={
                       width: block.width,
                       background: block.background,
                       border: block.border,
                       'box-shadow': block.boxshadow,
                   }, onclick=block.link)
+                  div(class='blocks-single-block-editor', onclick='')
+                    span='edit'
                   div(class='blocks-single-block-text')= block.text
                     img(class='blocks-single-block-icon' , src=block.icon, style={width: iconSize})
                   div(class='blocks-single-block-name', style={'font-size': fontSize})= block.name
@@ -27,7 +30,7 @@ html
               div(class='blocks-empty')
 
     script(src='https://kit.fontawesome.com/615e2ad26d.js' crossorigin='anonymous')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js' crossorigin='anonymous')
+    //- script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js' crossorigin='anonymous')
     script(src="/javascripts/script.js")
 
   footer
