@@ -3,10 +3,18 @@ div(id='new-block-wrapper')
         div(id='title')
             h1="Add new block"
         div(id='body')
-            textarea(id='new-block-text')
-            input(type='text', id='new-block-link', placeholder='link')
-            input(type='text', id='new-block-transperent', placeholder='transperent' value='true')
-            input(type='text', id='new-block-icon', placeholder='icon')
+            div(class='new-block-row')
+                span='Name:'
+                input(type='text', id='new-block-text')
+            div(class='new-block-row')
+                span='Link:'
+                input(type='text', id='new-block-link')
+            div(class='new-block-row')
+                span='Background:'
+                input(type='text', id='new-block-transperent', value='true')
+            div(class='new-block-row')
+                span='Icon:'
+                input(type='text', id='new-block-icon')
         div(id='footer')
             div(id='cancel-btn')
                 span="Cancel"

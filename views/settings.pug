@@ -5,12 +5,21 @@ div(id='settings-wrapper')
         div(id='body')
             div(id='settings-chane-wallpaper-btn', onclick='openWallpaperChooser()')
                 span='Change Wallpaper'
-            input(type='text', id='settings-bg', value=bg)
-            input(type='text', id='settings-theme', value=theme)
-            input(type='text', id='settings-blocksWrapperTop', value=blocksWrapperTop)
-            input(type='text', id='settings-blocksWrapperDirection', value=blocksWrapperDirection)
-            input(type='text', id='settings-iconSize', value=iconSize)
-            input(type='text', id='settings-fontSize', value=fontSize)
+            div(class='new-block-row')
+                span='Theme:'
+                input(type='text', id='settings-theme', value=theme)
+            div(class='new-block-row')
+                span='Distance from top:'
+                input(type='text', id='settings-blocksWrapperTop', value=blocksWrapperTop)
+            div(class='new-block-row')
+                span='Direction:'
+                input(type='text', id='settings-blocksWrapperDirection', value=blocksWrapperDirection)
+            div(class='new-block-row')
+                span='Icon size:'
+                input(type='text', id='settings-iconSize', value=iconSize)
+            div(class='new-block-row')
+                span='Font size:'
+                input(type='text', id='settings-fontSize', value=fontSize)
         div(id='footer')
             div(id='cancel-btn')
                 span="Cancel"

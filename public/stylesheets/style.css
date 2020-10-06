@@ -56,13 +56,21 @@ body {
   #new-block-main #body {
     height: 70%;
     padding: 20px; }
-    #new-block-main #body textarea {
-      width: 100%;
-      height: 100%;
-      margin-bottom: 10px; }
-    #new-block-main #body input {
-      width: 100%;
-      padding: 5px; }
+    #new-block-main #body .new-block-row {
+      display: flex;
+      flex-direction: row;
+      padding: 5px;
+      justify-content: space-between; }
+      #new-block-main #body .new-block-row span {
+        font-size: 11px;
+        display: flex;
+        width: 30%;
+        align-items: center; }
+      #new-block-main #body .new-block-row input {
+        width: 60%;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        padding: 3px;
+        outline: none; }
   #new-block-main #footer {
     display: flex;
     flex-direction: row;
@@ -85,7 +93,6 @@ body {
     flex-direction: row;
     flex-wrap: wrap; }
     .blocks-wrapper .blocks-main .blocks-single-block {
-      opacity: 0.6;
       padding: 5px;
       margin: 10px;
       font-family: Arial;
@@ -102,8 +109,7 @@ body {
         background: white;
         border-radius: 12px;
         text-align: center;
-        font-size: 11px;
-        width: 100%; }
+        font-size: 11px; }
       .blocks-wrapper .blocks-main .blocks-single-block .blocks-single-block-name {
         /* height: 30%; */
         font-size: 13px;
@@ -155,13 +161,32 @@ body {
     #settings-wrapper #settings-main #body {
       height: 70%;
       padding: 20px; }
-      #settings-wrapper #settings-main #body textarea {
+      #settings-wrapper #settings-main #body #settings-chane-wallpaper-btn {
         width: 100%;
-        height: 100%;
-        margin-bottom: 10px; }
-      #settings-wrapper #settings-main #body input {
-        width: 100%;
-        padding: 5px; }
+        text-align: center;
+        font-size: 10px;
+        background: rgba(100, 150, 150, 0.3);
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 1px;
+        margin-bottom: 10px;
+        color: rosybrown;
+        font-weight: 500; }
+      #settings-wrapper #settings-main #body .new-block-row {
+        display: flex;
+        flex-direction: row;
+        padding: 5px;
+        justify-content: space-between; }
+        #settings-wrapper #settings-main #body .new-block-row span {
+          font-size: 11px;
+          display: flex;
+          width: 30%;
+          align-items: center; }
+        #settings-wrapper #settings-main #body .new-block-row input {
+          width: 60%;
+          border: 1px solid rgba(0, 0, 0, 0.5);
+          padding: 3px;
+          outline: none; }
     #settings-wrapper #settings-main #footer {
       display: flex;
       flex-direction: row;

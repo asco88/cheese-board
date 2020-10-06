@@ -57,6 +57,10 @@ onClick('#settings-main #footer #cancel-btn', () => {
     hide('#settings-wrapper');
 });
 
+onClick('#wallpapers-main #footer #cancel-btn', () => {
+    hide('#wallpapers-wrapper');
+});
+
 onClick('#new-block-wrapper #submit-btn', async () => {
     const name = await value('#new-block-text');
     const link = await value('#new-block-link');
@@ -67,11 +71,6 @@ onClick('#new-block-wrapper #submit-btn', async () => {
         .then(() => {
             location.reload();
         });
-
-
-    // $.post("new-block", { value, link, transperent, icon }, (data) => {
-    //     location.reload();
-    // });
 });
 
 onClick('#settings-wrapper #submit-btn', async () => {
@@ -86,16 +85,9 @@ onClick('#settings-wrapper #submit-btn', async () => {
         .then(() => {
             location.reload();
         });
-
-    // $.post("settings", { bg, theme, blocksWrapperTop, blocksWrapperDirection, iconSize, fontSize }, (data) => {
-    //     location.reload();
-    // });
 });
 
 onClick('#wallpapers-wrapper #submit-btn', () => {
-    // $.post("change-wallpaper", { selectedBg }, (data) => {
-    //     location.reload();
-    // });
     postData('change-wallpaper', { selectedBg })
         .then(() => {
             location.reload();
