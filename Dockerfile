@@ -7,6 +7,8 @@ RUN npm install
 
 COPY . .
 
+ENV PRODUCTION=true
+
 EXPOSE 8080
 
 VOLUME /cheese-board/user_data

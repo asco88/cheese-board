@@ -13,4 +13,4 @@ const paths = {
     }
 }
 
-module.exports = paths.production;
+module.exports = process.env.PRODUCTION ? paths.production : paths.test;
