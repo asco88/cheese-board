@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 const fs = require('fs');
 const config = require('../config');
+const sharp = require('sharp');
+
 
 router.get('/', (req, res) => {
     const data = JSON.parse(fs.readFileSync(config.data));
@@ -39,7 +41,9 @@ router.get('/', (req, res) => {
         }
     });
 
-    res.render('index', { blocks, bgUrl, ...settings });
+    const thumbnails = fs.readdirSync('./public/images/thumbnails').map(item => {return {path: `/images/thumbnails/${item}`, id: item.split('.')[0], func: `pressWallpaper("${item.split('.')[0]}")`}});
+
+    res.render('index', { blocks, bgUrl, ...settings, wallpapers: [], thumbnails });
 });
 
 router.get('/editor', (req, res) => {
@@ -78,7 +82,9 @@ router.get('/editor', (req, res) => {
         }
     });
 
-    res.render('index', { blocks, bgUrl, ...settings });
+    const thumbnails = fs.readdirSync('./public/images/thumbnails').map(item => {return {path: `/images/thumbnails/${item}`, id: item.split('.')[0], func: `pressWallpaper("${item.split('.')[0]}")`}});
+
+    res.render('index', { blocks, bgUrl, ...settings, wallpapers: [], thumbnails });
 });
 
 router.post('/new-block', (req, res) => {
@@ -90,8 +96,6 @@ router.post('/new-block', (req, res) => {
     const blocks = JSON.parse(JSON.stringify(data.blocks));
     blocks.push({
         "name": value,
-        // "width": 100,
-        // "height": 100,
         "text": "",
         "link": link,
         "icon": `/images/icons/${icon}.png`,
@@ -122,5 +126,45 @@ router.post('/settings', (req, res) => {
 
     res.status(200).send();
 });
+
+router.post('/change-wallpaper', (req, res) => {
+    console.log(req.body);
+
+    const { selectedBg } = req.body;
+    const settings = JSON.parse(fs.readFileSync(config.settings));
+
+    settings.bg = `/images/wallpapers/${selectedBg}.jpg`;
+
+    fs.writeFileSync(config.settings, JSON.stringify(settings));
+
+    res.status(200).send();
+});
+
+router.get('/all-wallpapers', (req, res) => {
+
+    // copy all user wallpapers
+    fs.readdirSync(config.userWallpapers).forEach(file => {
+        console.log(file);
+
+        fs.copyFile(`${config.userWallpapers}/${file}`, `./public/images/wallpapers/${file}`, (err) => {
+            if (err) throw err;
+            console.log('source.txt was copied to destination.txt');
+        });
+    });
+
+    // convert wallpapers to thumbnails
+    fs.readdirSync('./public/images/wallpapers').forEach(file => {
+        sharp(`./public/images/wallpapers/${file}`).resize(150, 150).toFile(`./public/images/thumbnails/${file}`, (err, resizeImage) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(resizeImage);
+            }
+        });
+    });
+
+    res.status(200).send();
+})
+
 
 module.exports = router;

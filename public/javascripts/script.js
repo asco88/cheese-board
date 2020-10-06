@@ -1,3 +1,5 @@
+let selectedBg = undefined;
+
 $('#new-block-btn').click(() => {
     $('#new-block-wrapper').fadeIn(100);
 });
@@ -39,7 +41,26 @@ $('#settings-wrapper #submit-btn').click(() => {
     });
 });
 
+$('#wallpapers-wrapper #submit-btn').click(() => {
+    // const selectedBg = $('.wallpapers-single .active').val();
+
+    $.post("change-wallpaper", { selectedBg }, (data) => {
+        location.reload();
+    });
+});
+
 function openInNewTab(url) {
     const win = window.open(url, '_blank');
     win.focus();
+}
+
+function openWallpaperChooser() {
+    $('#settings-wrapper').fadeOut(100);
+    $('#wallpapers-wrapper').fadeIn(100);
+}
+
+function pressWallpaper(id) {
+    $('.wallpapers-single').removeClass('active')
+    $('#' + id).addClass('active');
+    selectedBg = id;
 }

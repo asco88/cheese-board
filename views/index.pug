@@ -11,6 +11,7 @@ html
         div(class='fas fa-plus-square', id='new-block-btn')
     include new-block.pug
     include settings.pug
+    include wallpapers.pug
     div(class='blocks-wrapper', style={top: blocksWrapperTop})
       div(class='blocks-main', style={'flex-direction': blocksWrapperDirection})
           each block in blocks

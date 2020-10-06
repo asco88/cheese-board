@@ -119,52 +119,104 @@ body {
 
 #settings-wrapper {
   display: none; }
+  #settings-wrapper #settings-main {
+    position: absolute;
+    width: 20%;
+    /* height: 20%; */
+    top: 20%;
+    right: 40%;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+    /* background-color: lightgrey; */
+    z-index: 1000;
+    /* opacity: 0.8; */
+    background: white;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    color: rgba(0, 0, 0, 0.6); }
+    #settings-wrapper #settings-main #title {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      font-size: 11px;
+      height: 20%; }
+    #settings-wrapper #settings-main #body {
+      height: 70%;
+      padding: 20px; }
+      #settings-wrapper #settings-main #body textarea {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 10px; }
+      #settings-wrapper #settings-main #body input {
+        width: 100%;
+        padding: 5px; }
+    #settings-wrapper #settings-main #footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      background-color: #d4d4d4;
+      height: 10%;
+      font-size: 10px;
+      cursor: pointer;
+      align-items: center;
+      font-weight: 600; }
+      #settings-wrapper #settings-main #footer #submit-btn:hover,
+      #settings-wrapper #settings-main #footer #cancel-btn:hover {
+        color: rgba(255, 255, 255, 0.6); }
 
-#settings-main {
-  position: absolute;
-  width: 20%;
-  /* height: 20%; */
-  top: 20%;
-  right: 40%;
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  border-radius: 4px;
-  /* background-color: lightgrey; */
-  z-index: 1000;
-  /* opacity: 0.8; */
-  background: white;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  color: rgba(0, 0, 0, 0.6); }
-  #settings-main #title {
+#wallpapers-wrapper {
+  display: none; }
+  #wallpapers-wrapper #wallpapers-main {
+    position: absolute;
+    width: 50%;
+    /* height: 20%; */
+    top: 20%;
+    right: 25%;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+    /* background-color: lightgrey; */
+    z-index: 1000;
+    /* opacity: 0.8; */
+    background: white;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-size: 11px;
-    height: 20%; }
-  #settings-main #body {
-    height: 70%;
-    padding: 20px; }
-    #settings-main #body textarea {
-      width: 100%;
-      height: 100%;
-      margin-bottom: 10px; }
-    #settings-main #body input {
-      width: 100%;
-      padding: 5px; }
-  #settings-main #footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: #d4d4d4;
-    height: 10%;
-    font-size: 10px;
-    cursor: pointer;
-    align-items: center;
-    font-weight: 600; }
-    #settings-main #footer #submit-btn:hover,
-    #settings-main #footer #cancel-btn:hover {
-      color: rgba(255, 255, 255, 0.6); }
+    flex-direction: column;
+    color: rgba(0, 0, 0, 0.6); }
+    #wallpapers-wrapper #wallpapers-main #title {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      font-size: 11px;
+      height: 20%; }
+    #wallpapers-wrapper #wallpapers-main #body {
+      height: 70%;
+      padding: 20px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap; }
+      #wallpapers-wrapper #wallpapers-main #body .wallpapers-single {
+        padding: 10px; }
+        #wallpapers-wrapper #wallpapers-main #body .wallpapers-single:hover {
+          padding: 0px;
+          border: 10px rgba(0, 0, 0, 0.1) solid;
+          cursor: pointer; }
+        #wallpapers-wrapper #wallpapers-main #body .wallpapers-single.active {
+          padding: 0px;
+          border: 10px rgba(0, 0, 200, 0.3) solid; }
+    #wallpapers-wrapper #wallpapers-main #footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      background-color: #d4d4d4;
+      height: 10%;
+      font-size: 10px;
+      cursor: pointer;
+      align-items: center;
+      font-weight: 600; }
+      #wallpapers-wrapper #wallpapers-main #footer #submit-btn:hover,
+      #wallpapers-wrapper #wallpapers-main #footer #cancel-btn:hover {
+        color: rgba(255, 255, 255, 0.6); }
 
 footer {
   width: 100%;

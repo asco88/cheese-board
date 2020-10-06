@@ -1,0 +1,13 @@
+div(id='wallpapers-wrapper')
+    div(id='wallpapers-main')
+        div(id='title')
+            h1="Wallpapers"
+        div(id='body')
+            each item in thumbnails
+                div(class='wallpapers-single', id=item.id, onclick=item.func, value=item.id )
+                    img(class='wallpapers-single-thumbnail', src=item.path)
+        div(id='footer')
+            div(id='cancel-btn')
+                span="Cancel"
+            div(id='submit-btn')
+                span="Change Wallpaper"
