@@ -2,16 +2,19 @@ html
   head
     style
         include ../public/stylesheets/style.css
+        include ../public/stylesheets/all.css
     title= title
   body(style={'background-image': bgUrl})
     div(class='top-bar')
       div(class='right-panel', style={color: theme})
         div(class='fas fa-pencil-alt', id='edit-btn', onclick='window.location.href="/editor"')
+        div(class='fas fa-image', id='wallpapers-btn')
         div(class='fas fa-cog', id='settings-btn')
         div(class='fas fa-plus', id='new-block-btn')
     include new-block.pug
     include settings.pug
     include wallpapers.pug
+    include icons.pug
     div(class='blocks-wrapper', style={top: blocksWrapperTop})
       div(class='blocks-main', style={'flex-direction': blocksWrapperDirection})
           each block in blocks
@@ -27,7 +30,7 @@ html
           else
               div(class='blocks-empty')
 
-    script(src='https://kit.fontawesome.com/615e2ad26d.js' crossorigin='anonymous')
+    //- script(src='https://kit.fontawesome.com/615e2ad26d.js' crossorigin='anonymous')
     //- script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js' crossorigin='anonymous')
     script(src="/javascripts/script.js")
 

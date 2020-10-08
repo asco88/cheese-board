@@ -1,4 +1,5 @@
 let selectedBg = undefined;
+let selectedIcon = undefined;
 
 async function postData(url = '', data = {}) {
     const response = await fetch(url, {
@@ -47,6 +48,10 @@ onClick('#settings-btn', () => {
     show('#settings-wrapper');
 });
 
+onClick('#wallpapers-btn', () => {
+    show('#wallpapers-wrapper');
+});
+
 // close modals
 
 onClick('#new-block-main #footer #cancel-btn', () => {
@@ -61,6 +66,11 @@ onClick('#wallpapers-main #footer #cancel-btn', () => {
     hide('#wallpapers-wrapper');
 });
 
+onClick('#icons-main #footer #cancel-btn', () => {
+    hide('#icons-wrapper');
+});
+
+
 onClick('#new-block-wrapper #submit-btn', async () => {
     const name = await value('#new-block-text');
     const link = await value('#new-block-link');
@@ -74,14 +84,13 @@ onClick('#new-block-wrapper #submit-btn', async () => {
 });
 
 onClick('#settings-wrapper #submit-btn', async () => {
-    const bg = await value('#settings-bg');
     const theme = await value('#settings-theme');
     const blocksWrapperTop = await value('#settings-blocksWrapperTop');
     const blocksWrapperDirection = await value('#settings-blocksWrapperDirection');
     const iconSize = await value('#settings-iconSize');
     const fontSize = await value('#settings-fontSize');
 
-    postData('settings', { bg, theme, blocksWrapperTop, blocksWrapperDirection, iconSize, fontSize })
+    postData('settings', { theme, blocksWrapperTop, blocksWrapperDirection, iconSize, fontSize })
         .then(() => {
             location.reload();
         });
@@ -114,3 +123,46 @@ function pressWallpaper(id) {
     addClass('#' + id, 'active');
     selectedBg = id;
 }
+
+const getIcons = async () => {
+    const response = await fetch('all-icons');
+
+    response.json().then(data => {
+        show('#icons-wrapper');
+
+        data.forEach(item => {
+            const path = `/images/icons/${item}`;
+            console.log(path);
+
+            const node = document.createElement('div');
+            node.classList.add('icons-single');
+            node.onclick = () => selectIcon(item.split('.')[0]);
+            node.id = item.split('.')[0];
+
+            const imageNode = document.createElement('img')
+            imageNode.src = path;
+            node.appendChild(imageNode);
+
+            document.querySelector('#icons-wrapper #body').appendChild(node);
+        })
+    })
+
+}
+
+const selectIcon = (id) => {
+    const els = document.querySelectorAll('.icons-single');
+
+    // clean previous active icon
+    for(i = 0; i < els.length; i++) {
+        els[i].classList.remove('active')
+    }
+
+    // make selcted icon active
+    addClass('#' + id, 'active');
+    selectedIcon = id;
+}
+
+onClick('#icons-wrapper #submit-btn', () => {
+    document.querySelector('#new-block-wrapper #new-block-icon').value = selectedIcon;
+    hide('#icons-wrapper');
+});

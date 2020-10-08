@@ -112,10 +112,10 @@ router.post('/new-block', (req, res) => {
 router.post('/settings', (req, res) => {
     console.log(req.body);
 
-    const { bg, theme, blocksWrapperTop, blocksWrapperDirection, iconSize, fontSize } = req.body;
+    const { theme, blocksWrapperTop, blocksWrapperDirection, iconSize, fontSize } = req.body;
     const settings = JSON.parse(fs.readFileSync(config.settings));
 
-    settings.bg = bg;
+
     settings.theme = theme;
     settings.blocksWrapperTop = blocksWrapperTop;
     settings.blocksWrapperDirection = blocksWrapperDirection;
@@ -166,5 +166,26 @@ router.get('/all-wallpapers', (req, res) => {
     res.status(200).send();
 })
 
+router.get('/all-icons', (req, res) => {
+
+    // copy all user wallpapers
+    fs.readdirSync(config.userWallpapers).forEach(file => {
+        console.log(file);
+
+        fs.copyFile(`${config.userWallpapers}/${file}`, `./public/images/icons${file}`, (err) => {
+            if (err) throw err;
+            console.log('source.txt was copied to destination.txt');
+        });
+    });
+
+    const iconsList = [];
+
+    // convert wallpapers to thumbnails
+    fs.readdirSync('./public/images/icons').forEach(file => {
+        iconsList.push(file);
+    });
+
+    res.status(200).json(iconsList).send();
+})
 
 module.exports = router;
