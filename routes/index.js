@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
         }
     });
 
-    const thumbnails = fs.readdirSync('./public/images/thumbnails').map(item => {return {path: `/images/thumbnails/${item}`, id: item.split('.')[0], func: `pressWallpaper("${item.split('.')[0]}")`}});
+    const thumbnails = fs.readdirSync('./public/images/thumbnails').map(item => { return { path: `/images/thumbnails/${item}`, id: item.split('.')[0], func: `pressWallpaper("${item.split('.')[0]}")` } });
 
     res.render('index', { blocks, bgUrl, ...settings, wallpapers: [], thumbnails });
 });
@@ -82,7 +82,7 @@ router.get('/editor', (req, res) => {
         }
     });
 
-    const thumbnails = fs.readdirSync('./public/images/thumbnails').map(item => {return {path: `/images/thumbnails/${item}`, id: item.split('.')[0], func: `pressWallpaper("${item.split('.')[0]}")`}});
+    const thumbnails = fs.readdirSync('./public/images/thumbnails').map(item => { return { path: `/images/thumbnails/${item}`, id: item.split('.')[0], func: `pressWallpaper("${item.split('.')[0]}")` } });
 
     res.render('editor', { blocks, bgUrl, ...settings, wallpapers: [], thumbnails });
 });
@@ -185,7 +185,24 @@ router.get('/all-icons', (req, res) => {
         iconsList.push(file);
     });
 
-    res.status(200).json(iconsList).send();
+    res.json(iconsList).send();
+})
+
+router.post('/change-location/icons', (req, res) => {
+    const { iconsLocation } = req.body;
+    const settings = JSON.parse(fs.readFileSync(config.settings));
+
+    settings.iconsLocation = iconsLocation;
+
+    fs.writeFileSync(config.settings, JSON.stringify(settings));
+
+    res.json({}).send();
+})
+
+router.get('/location/icons', (req, res) => {
+    const { iconsLocation } = JSON.parse(fs.readFileSync(config.settings));
+
+    res.json({ iconsLocation }).send();
 })
 
 module.exports = router;

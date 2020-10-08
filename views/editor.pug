@@ -15,8 +15,8 @@ html
     include settings.pug
     include wallpapers.pug
     include icons.pug
-    div(class='blocks-location-wrapper')
-      div(id='blocks-location-1', ondrop="drop(event)" ondragover="allowDrop(event)")
+    .blocks-location-wrapper-editor
+      #blocks-location-1(ondrop="drop(event)" ondragover="allowDrop(event)")
         div(class='blocks-wrapper', id='blocks-wrapper', draggable="true", ondragstart="drag(event)", style={top: blocksWrapperTop})
           div(class='blocks-main',  style={'flex-direction': blocksWrapperDirection})
               each block in blocks
@@ -26,17 +26,17 @@ html
                           border: block.border,
                           'box-shadow': block.boxshadow,
                       })
-                      div(class='blocks-single-block-text', onclick=block.link)= block.text
+                      .blocks-single-block-text(onclick=block.link)= block.text
                         img(class='blocks-single-block-icon' , src=block.icon, style={width: iconSize})
-                      div(class='blocks-single-block-name', style={'font-size': fontSize})= block.name
+                      .blocks-single-block-name(style={'font-size': fontSize})= block.name
               else
-                  div(class='blocks-empty')
-      div(id='blocks-location-2', ondrop="drop(event)" ondragover="allowDrop(event)")
-      div(id='blocks-location-3', ondrop="drop(event)" ondragover="allowDrop(event)")
-      div(id='blocks-location-4', ondrop="drop(event)" ondragover="allowDrop(event)")
-      div(id='blocks-location-5', ondrop="drop(event)" ondragover="allowDrop(event)")
-      div(id='blocks-location-6', ondrop="drop(event)" ondragover="allowDrop(event)")
-      div(id='blocks-location-7', ondrop="drop(event)" ondragover="allowDrop(event)")
+                  .blocks-empty
+      #blocks-location-2(ondrop="drop(event)", ondragover="allowDrop(event)")
+      #blocks-location-3(ondrop="drop(event)", ondragover="allowDrop(event)")
+      #blocks-location-4(ondrop="drop(event)", ondragover="allowDrop(event)")
+      #blocks-location-5(ondrop="drop(event)", ondragover="allowDrop(event)")
+      #blocks-location-6(ondrop="drop(event)", ondragover="allowDrop(event)")
+      #blocks-location-7(ondrop="drop(event)", ondragover="allowDrop(event)")
 
     script(src="/javascripts/script.js")
 

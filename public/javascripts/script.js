@@ -184,4 +184,29 @@ function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
+
+    // set new location
+    postData('change-location/icons', { iconsLocation: ev.target.id })
+        .then(() => {
+            // location.reload();
+        });
 }
+
+// function dragover(e) {
+//     cancelDefault(e);
+//     this.classList.add("hover");
+// }
+
+const changeBlocksLocation = async () => {
+    const response = await fetch("location/icons");
+
+    response.json().then(({iconsLocation}) => {
+        const blocks = document.querySelector("#blocks-wrapper");
+        blocks.style.display = "block";
+        document.querySelector("#" + iconsLocation).appendChild(blocks);
+    })
+}
+
+window.addEventListener('load', function () {
+    changeBlocksLocation();
+})
