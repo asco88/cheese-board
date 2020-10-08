@@ -34,6 +34,10 @@ const value = async (selector) => {
     return document.querySelector(selector).value;
 }
 
+const checked = async (selector) => {
+    return document.querySelector(selector).checked;
+}
+
 const addClass = (selector, clazz) => {
     document.querySelector(selector).classList.add(clazz);
 }
@@ -74,7 +78,7 @@ onClick('#icons-main #footer #cancel-btn', () => {
 onClick('#new-block-wrapper #submit-btn', async () => {
     const name = await value('#new-block-text');
     const link = await value('#new-block-link');
-    const transperent = await value('#new-block-transperent');
+    const transperent = await checked('#new-block-transperent');
     const icon = await value('#new-block-icon');
 
     postData('new-block', { value: name, link, transperent, icon })
@@ -116,7 +120,7 @@ function openWallpaperChooser() {
 function pressWallpaper(id) {
     const els = document.querySelectorAll('.wallpapers-single');
 
-    for(i = 0; i < els.length; i++) {
+    for (i = 0; i < els.length; i++) {
         els[i].classList.remove('active')
     }
 
@@ -153,7 +157,7 @@ const selectIcon = (id) => {
     const els = document.querySelectorAll('.icons-single');
 
     // clean previous active icon
-    for(i = 0; i < els.length; i++) {
+    for (i = 0; i < els.length; i++) {
         els[i].classList.remove('active')
     }
 
@@ -166,3 +170,18 @@ onClick('#icons-wrapper #submit-btn', () => {
     document.querySelector('#new-block-wrapper #new-block-icon').value = selectedIcon;
     hide('#icons-wrapper');
 });
+
+// drag blocks-main component
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}

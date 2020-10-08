@@ -119,9 +119,62 @@ body {
     }
 }
 
-.blocks-wrapper {
+.blocks-location-wrapper {
     position: absolute;
-    top: 0;
+    top: 100px;
+    // width: ;
+}
+
+.blocks-location-section {
+    border-left: 5px black solid;
+}
+
+#blocks-location-1 {
+    border: 3px black dashed;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+#blocks-location-2 {
+    border: 3px black dashed;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+#blocks-location-3 {
+    border: 3px black dashed;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+#blocks-location-4 {
+    border: 3px black dashed;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+#blocks-location-5 {
+    border: 3px black dashed;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+#blocks-location-6 {
+    border: 3px black dashed;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+#blocks-location-7 {
+    border: 3px black dashed;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.blocks-wrapper {
+    // position: absolute;
+    // top: 0;
 
     .blocks-main {
         display: flex;

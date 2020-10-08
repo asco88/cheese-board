@@ -11,10 +11,13 @@ div(id='new-block-wrapper')
                 input(type='text', id='new-block-link')
             div(class='new-block-row')
                 span='Background:'
-                input(type='text', id='new-block-transperent', value='true')
-            div(class='new-block-row' onclick='getIcons()')
+                label='True'
+                input(type='radio', id='new-block-transperent', name='new-block-transperent', value='true', checked)
+                label='False'
+                input(type='radio', id='new-block-transperent', name='new-block-transperent', value='false')
+            div(class='new-block-row' onclick='getIcons()', id='new-block-icon')
                 span='Icon:'
-                input(type='text', id='new-block-icon')
+                //- input(type='text', id='new-block-icon')
         div(id='footer')
             div(id='cancel-btn')
                 span="Cancel"
