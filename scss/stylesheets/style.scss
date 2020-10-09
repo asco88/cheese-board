@@ -6,7 +6,7 @@ body {
     background-size: cover;
 }
 
-.top-bar {
+#top-bar {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -119,7 +119,7 @@ body {
     }
 }
 
-.blocks-location-wrapper-editor {
+#blocks-location-wrapper-editor {
     position: absolute;
     top: 100px;
 
@@ -129,102 +129,17 @@ body {
         width: 100%;
         margin-bottom: 5px;
     }
-
-    // #blocks-location-1 {
-    //     border: 2px rgba(0, 0, 0, 0.2) dashed;
-    //     height: 100px;
-    //     width: 100%;
-    //     margin-bottom: 5px;
-    // }
-
-    // #blocks-location-2 {
-    //     border: 2px rgba(0, 0, 0, 0.2) dashed;
-    //     height: 100px;
-    //     width: 100%;
-    //     margin-bottom: 5px;
-    // }
-
-    // #blocks-location-3 {
-    //     border: 2px rgba(0, 0, 0, 0.2) dashed;
-    //     height: 100px;
-    //     width: 100%;
-    //     margin-bottom: 5px;
-    // }
-
-    // #blocks-location-4 {
-    //     border: 2px rgba(0, 0, 0, 0.2) dashed;
-    //     height: 100px;
-    //     width: 100%;
-    //     margin-bottom: 5px;
-    // }
-
-    // #blocks-location-5 {
-    //     border: 2px rgba(0, 0, 0, 0.2) dashed;
-    //     height: 100px;
-    //     width: 100%;
-    //     margin-bottom: 5px;
-    // }
-
-    // #blocks-location-6 {
-    //     border: 2px rgba(0, 0, 0, 0.2) dashed;
-    //     height: 100px;
-    //     width: 100%;
-    //     margin-bottom: 5px;
-    // }
-
-    // #blocks-location-7 {
-    //     border: 2px rgba(0, 0, 0, 0.2) dashed;
-    //     height: 100px;
-    //     width: 100%;
-    //     margin-bottom: 5px;
-    // }
 }
 
 .hover {
     border-color: aqua;
 }
 
-.blocks-location-wrapper {
+#blocks-location-wrapper {
     position: absolute;
     top: 100px;
 
-    #blocks-location-1 {
-        height: 100px;
-        width: 100%;
-        margin-bottom: 5px;
-    }
-
-    #blocks-location-2 {
-        height: 100px;
-        width: 100%;
-        margin-bottom: 5px;
-    }
-
-    #blocks-location-3 {
-        height: 100px;
-        width: 100%;
-        margin-bottom: 5px;
-    }
-
-    #blocks-location-4 {
-        height: 100px;
-        width: 100%;
-        margin-bottom: 5px;
-    }
-
-    #blocks-location-5 {
-        height: 100px;
-        width: 100%;
-        margin-bottom: 5px;
-    }
-
-    #blocks-location-6 {
-        height: 100px;
-        width: 100%;
-        margin-bottom: 5px;
-    }
-
-    #blocks-location-7 {
+    [data-role="drag-drop-container"] {
         height: 100px;
         width: 100%;
         margin-bottom: 5px;
@@ -557,7 +472,7 @@ footer {
     justify-content: flex-end;
 }
 
-.cheese-board {
+#cheese-board {
     position: absolute;
     bottom: 40px;
     opacity: 0.8;

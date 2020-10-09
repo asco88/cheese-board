@@ -1,4 +1,4 @@
-div(class='blocks-wrapper', id='blocks-wrapper', style={top: blocksWrapperTop})
+div(class='blocks-wrapper', id='blocks-wrapper', draggable="true", ondragstart="drag(event)", style={top: blocksWrapperTop})
     div(class='blocks-main',  style={'flex-direction': blocksWrapperDirection})
         each block in blocks
             div(class='blocks-single-block' style={

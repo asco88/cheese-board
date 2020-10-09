@@ -5,9 +5,9 @@ html
         include ../public/stylesheets/all.css
     title= title
   body(style={'background-image': bgUrl})
-    div(class='top-bar')
+    #top-bar
       div(class='right-panel', style={color: theme})
-        div(class='fas fa-pencil-alt', id='edit-btn', onclick='window.location.href="/editor"')
+        div(class='fas fa-pencil-alt', id='edit-btn')
         div(class='fas fa-image', id='wallpapers-btn')
         div(class='fas fa-cog', id='settings-btn')
         div(class='fas fa-plus', id='new-block-btn')
@@ -16,19 +16,19 @@ html
     include wallpapers.pug
     include icons.pug
     include blocks.pug
-    div(class='blocks-location-wrapper')
-      #blocks-location-1
-      #blocks-location-2
-      #blocks-location-3
-      #blocks-location-4
-      #blocks-location-5
-      #blocks-location-6
-      #blocks-location-7
+    #blocks-location-wrapper
+      #blocks-location-1(data-role='drag-drop-container', ondrop="drop(event)" ondragover="allowDrop(event)")
+      #blocks-location-2(data-role='drag-drop-container', ondrop="drop(event)", ondragover="allowDrop(event)")
+      #blocks-location-3(data-role='drag-drop-container', ondrop="drop(event)", ondragover="allowDrop(event)")
+      #blocks-location-4(data-role='drag-drop-container', ondrop="drop(event)", ondragover="allowDrop(event)")
+      #blocks-location-5(data-role='drag-drop-container', ondrop="drop(event)", ondragover="allowDrop(event)")
+      #blocks-location-6(data-role='drag-drop-container', ondrop="drop(event)", ondragover="allowDrop(event)")
+      #blocks-location-7(data-role='drag-drop-container', ondrop="drop(event)", ondragover="allowDrop(event)")
 
     script(src="/javascripts/script.js")
 
   footer
-    div(class='cheese-board', onclick='openInNewTab("https://github.com/asco88/cheese-board")')
+    #cheese-board(onclick='openInNewTab("https://github.com/asco88/cheese-board")')
       div(id='title')
         span='cheese-board'
       div(class='fas fa-cheese', id='cheese-btn')

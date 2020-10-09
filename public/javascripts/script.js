@@ -74,6 +74,12 @@ onClick('#icons-main #footer #cancel-btn', () => {
     hide('#icons-wrapper');
 });
 
+onClick('#edit-btn', () => {
+    if (window.location.href.includes("editor"))
+        window.location.href="/";
+    else
+        window.location.href="/editor";
+});
 
 onClick('#new-block-wrapper #submit-btn', async () => {
     const name = await value('#new-block-text');
@@ -210,3 +216,7 @@ const changeBlocksLocation = async () => {
 window.addEventListener('load', function () {
     changeBlocksLocation();
 })
+
+// onClick('#cheese-board', () => {
+//     openInNewTab("https://github.com/asco88/cheese-board");
+// });
