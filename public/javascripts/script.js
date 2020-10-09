@@ -1,6 +1,38 @@
 let selectedBg = undefined;
 let selectedIcon = undefined;
 
+const state = {
+    selectedBg: undefined,
+    selectedIcon: undefined,
+    mode: 'editor'
+}
+
+const setBlocksLocation = async () => {
+    const response = await fetch("location/icons");
+
+    response.json().then(({ iconsLocation }) => {
+        const editorWrapper = document.querySelector('#blocks-location-wrapper-editor');
+        const wrapper = document.querySelector('#blocks-location-wrapper');
+        for (let i = 1; i < 9; i++) {
+            const node = document.createElement('div');
+            node.id = `blocks-location-${i}`;
+            node.setAttribute('data-role', 'drag-drop-container')
+            node.setAttribute('ondrop', 'drop(event)')
+            node.setAttribute('ondragover', 'allowDrop(event)')
+
+            if (node.id === iconsLocation) {
+                const blocks = document.querySelector("#blocks-wrapper");
+                blocks.style.display = "block";
+
+                node.appendChild(blocks);
+            }
+
+            if (wrapper) wrapper.appendChild(node);
+            if (editorWrapper) editorWrapper.appendChild(node);
+        }
+    })
+}
+
 async function postData(url = '', data = {}) {
     const response = await fetch(url, {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -17,6 +49,8 @@ async function postData(url = '', data = {}) {
     });
     return response.json(); // parses JSON response into native JavaScript objects
 }
+
+
 
 const show = (selector) => {
     document.querySelector(selector).style.display = 'block';
@@ -75,10 +109,14 @@ onClick('#icons-main #footer #cancel-btn', () => {
 });
 
 onClick('#edit-btn', () => {
-    if (window.location.href.includes("editor"))
-        window.location.href="/";
-    else
-        window.location.href="/editor";
+    if (window.location.href.includes("editor")) {
+        state.mode = '';
+        window.location.href = "/";
+    }
+    else {
+        state.mode = 'editor';
+        window.location.href = "/editor";
+    }
 });
 
 onClick('#new-block-wrapper #submit-btn', async () => {
@@ -203,18 +241,10 @@ function drop(ev) {
 //     this.classList.add("hover");
 // }
 
-const changeBlocksLocation = async () => {
-    const response = await fetch("location/icons");
 
-    response.json().then(({iconsLocation}) => {
-        const blocks = document.querySelector("#blocks-wrapper");
-        blocks.style.display = "block";
-        document.querySelector("#" + iconsLocation).appendChild(blocks);
-    })
-}
 
 window.addEventListener('load', function () {
-    changeBlocksLocation();
+    setBlocksLocation();
 })
 
 // onClick('#cheese-board', () => {
