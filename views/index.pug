@@ -15,22 +15,9 @@ html
     include settings.pug
     include wallpapers.pug
     include icons.pug
+    include blocks.pug
     div(class='blocks-location-wrapper')
       #blocks-location-1
-        div(class='blocks-wrapper', id='blocks-wrapper', style={top: blocksWrapperTop})
-          div(class='blocks-main',  style={'flex-direction': blocksWrapperDirection})
-              each block in blocks
-                  div(class='blocks-single-block' style={
-                          width: block.width,
-                          background: block.background,
-                          border: block.border,
-                          'box-shadow': block.boxshadow,
-                      })
-                      div(class='blocks-single-block-text', onclick=block.link)= block.text
-                        img(class='blocks-single-block-icon' , src=block.icon, style={width: iconSize})
-                      div(class='blocks-single-block-name', style={'font-size': fontSize})= block.name
-              else
-                  div(class='blocks-empty')
       #blocks-location-2
       #blocks-location-3
       #blocks-location-4

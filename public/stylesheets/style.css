@@ -90,37 +90,7 @@ body {
 .blocks-location-wrapper-editor {
   position: absolute;
   top: 100px; }
-  .blocks-location-wrapper-editor #blocks-location-1 {
-    border: 2px rgba(0, 0, 0, 0.2) dashed;
-    height: 100px;
-    width: 100%;
-    margin-bottom: 5px; }
-  .blocks-location-wrapper-editor #blocks-location-2 {
-    border: 2px rgba(0, 0, 0, 0.2) dashed;
-    height: 100px;
-    width: 100%;
-    margin-bottom: 5px; }
-  .blocks-location-wrapper-editor #blocks-location-3 {
-    border: 2px rgba(0, 0, 0, 0.2) dashed;
-    height: 100px;
-    width: 100%;
-    margin-bottom: 5px; }
-  .blocks-location-wrapper-editor #blocks-location-4 {
-    border: 2px rgba(0, 0, 0, 0.2) dashed;
-    height: 100px;
-    width: 100%;
-    margin-bottom: 5px; }
-  .blocks-location-wrapper-editor #blocks-location-5 {
-    border: 2px rgba(0, 0, 0, 0.2) dashed;
-    height: 100px;
-    width: 100%;
-    margin-bottom: 5px; }
-  .blocks-location-wrapper-editor #blocks-location-6 {
-    border: 2px rgba(0, 0, 0, 0.2) dashed;
-    height: 100px;
-    width: 100%;
-    margin-bottom: 5px; }
-  .blocks-location-wrapper-editor #blocks-location-7 {
+  .blocks-location-wrapper-editor [data-role="drag-drop-container"] {
     border: 2px rgba(0, 0, 0, 0.2) dashed;
     height: 100px;
     width: 100%;

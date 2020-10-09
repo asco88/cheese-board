@@ -1,0 +1,14 @@
+div(class='blocks-wrapper', id='blocks-wrapper', draggable="true", ondragstart="drag(event)", style={top: blocksWrapperTop})
+    div(class='blocks-main',  style={'flex-direction': blocksWrapperDirection})
+        each block in blocks
+            div(class='blocks-single-block' style={
+                    width: block.width,
+                    background: block.background,
+                    border: block.border,
+                    'box-shadow': block.boxshadow,
+                })
+                .blocks-single-block-text(onclick=block.link)= block.text
+                    img(class='blocks-single-block-icon' , src=block.icon, style={width: iconSize})
+                .blocks-single-block-name(style={'font-size': fontSize})= block.name
+        else
+            .blocks-empty
