@@ -122,11 +122,16 @@ body {
 #blocks-location-wrapper-editor {
     position: absolute;
     top: 100px;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 
     [data-role="drag-drop-container"] {
         border: 2px rgba(0, 0, 0, 0.2) dashed;
         height: 100px;
-        width: 100%;
+        // width: 100%;
         margin-bottom: 5px;
     }
 }
@@ -138,10 +143,15 @@ body {
 #blocks-location-wrapper {
     position: absolute;
     top: 100px;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 
     [data-role="drag-drop-container"] {
         height: 100px;
-        width: 100%;
+        // width: 100%;
         margin-bottom: 5px;
     }
 }

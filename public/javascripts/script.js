@@ -13,7 +13,7 @@ const setBlocksLocation = async () => {
     response.json().then(({ iconsLocation }) => {
         const editorWrapper = document.querySelector('#blocks-location-wrapper-editor');
         const wrapper = document.querySelector('#blocks-location-wrapper');
-        for (let i = 1; i < 9; i++) {
+        for (let i = 1; i < 22; i++) {
             const node = document.createElement('div');
             node.id = `blocks-location-${i}`;
             node.setAttribute('data-role', 'drag-drop-container')
